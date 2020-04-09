@@ -125,18 +125,13 @@ public class HomeController {
             setUserInSession(request.getSession(), theUser);
             //changed here
             model.addAttribute("user",theUser);
-            return "redirect:/list";
+            return "redirect:/task";
         }
 
         @GetMapping("/logout")
         public String logout(HttpServletRequest request){
             request.getSession().invalidate();
             return "redirect:/login";
-        }
-
-        @GetMapping("list")
-        public String displayListView() {
-            return "/list";
         }
 
 }

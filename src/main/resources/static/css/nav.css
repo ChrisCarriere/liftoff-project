@@ -12,17 +12,18 @@ p {
     color: #999;
 }
 
-a,
-a:hover,
-a:focus {
-    color: #111111;
-    text-decoration: none;
+a {
+    color: white;
+    border 1px;
+}
+a:hover:focus:active {
+    color: white;
     transition: all 0.3s;
 }
 
 .navbar {
     padding: 15px 10px;
-    background-color: #3D9970;
+    background-color: #594F4F;
     border: none;
     border-radius: 0;
     margin-bottom: 40px;

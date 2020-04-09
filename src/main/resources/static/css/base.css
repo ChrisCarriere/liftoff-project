@@ -3,6 +3,34 @@ h1{
 }
 
 .user_card{
-    background-color: #3D9970;
+    background-color: #594F4F;
     margin: 30px;
+}
+
+.create{
+    width: 33%;
+    background-color: #594F4F;
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+body{
+    background: linear-gradient(#E5FCC2, #9DE0AD, #45ADA8, #547980, #594F4F );
+    }
+
+ul{
+    text-align: left;
+    list-style-position: inside;
 }

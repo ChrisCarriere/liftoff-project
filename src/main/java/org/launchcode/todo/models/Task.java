@@ -17,9 +17,8 @@ public class Task extends AbstractEntity {
     public Task(String aName){
         this.name = aName;
     }
-    public Task(){
 
-    }
+    public Task(){}
 
     public String getName() {
         return name;

@@ -11,11 +11,11 @@ public class Task extends AbstractEntity {
     @NotBlank
     @Size(min = 3, max = 50, message = "name must be between 3 and 50 characters")
     private String name;
-
     private Number priority;
 
-    public Task(String aName){
-        this.name = aName;
+    public Task(String name, Number priority){
+        this.name = name;
+        this.priority = priority;
     }
 
     public Task(){}

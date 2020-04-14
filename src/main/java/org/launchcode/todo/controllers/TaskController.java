@@ -31,8 +31,8 @@ public class TaskController {
     }
 
     @PostMapping("create")
-    public String createTask(@RequestParam String taskName){
-        tasks.add(new Task(taskName));
+    public String createTask(@RequestParam String taskName, @RequestParam Number taskPriority){
+        tasks.add(new Task(taskName, taskPriority));
         return "redirect:";
     }
 

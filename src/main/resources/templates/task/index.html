@@ -11,11 +11,19 @@
 
 <p th:unless="${tasks} and ${tasks.size()}">Find something to do!</p>
 
-    <ul>
-        <th:block th:each="task : ${tasks}">
-            <li th:text="${task.name}"></li>
-        </th:block>
-    </ul>
+    <table th:if="${tasks.size()}">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.name}"></td>
+            <td th:text="${task.priority}"></td>
+        </tr>
+    </table>
 
 </body>
 </html>

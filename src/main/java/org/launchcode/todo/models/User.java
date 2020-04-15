@@ -5,9 +5,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Entity
 public class User extends AbstractEntity {
+
+    private int id;
+    private static int nextId = 1;
 
     @NotNull
     private String username;
@@ -21,6 +25,8 @@ public class User extends AbstractEntity {
     public User(String username, String password) {
         this.username = username;
         this.pwHash = encoder.encode(password);
+        this.id = nextId;
+        nextId++;
     }
 
     public String getUsername() {
@@ -31,4 +37,22 @@ public class User extends AbstractEntity {
         return encoder.matches(password, pwHash);
     }
 
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        User user = (User) o;
+        return id == user.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id);
+    }
 }

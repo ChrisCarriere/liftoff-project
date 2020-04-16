@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body>
+<nav th:replace="fragments :: navigation"></nav>
+<h1>Delete Tasks</h1>
+
+<div class="user_card" style="padding: 30px">
+    <div class="d-flex justify-content-center form_container">
+        <form method="post">
+
+                <th:block th:each="task : ${tasks}">
+                    <div class="form-group">
+                    <label>
+                        <span th:text="${task.name}"></span>
+                        <input type="checkbox" name="taskIds" th:value="${task.id}" class="form-control">
+                    </label>
+                    </div>
+                </th:block>
+
+            <div class="d-flex justify-content-center mt-3 login_container">
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

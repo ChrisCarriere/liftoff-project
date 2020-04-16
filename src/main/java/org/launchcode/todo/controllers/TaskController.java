@@ -35,4 +35,22 @@ public class TaskController {
         return "redirect:";
     }
 
+    @GetMapping("delete")
+    public String renderDeleteEventForm(Model model){
+        model.addAttribute("title", "Delete Events");
+        model.addAttribute("tasks", TaskData.getAll());
+        return "task/delete";
+        }
+
+    @PostMapping("delete")
+    public String deleteTask(@RequestParam(required = false) int[] taskIds){
+
+        if(taskIds != null) {
+            for (int id : taskIds) {
+                TaskData.remove(id);
+            }
+        }
+        return "redirect:";
+    }
 }
+

@@ -1,6 +1,7 @@
 package org.launchcode.todo.controllers;
 
 
+import org.launchcode.todo.data.TaskData;
 import org.launchcode.todo.models.Task;
 import org.springframework.stereotype.Controller;
 
@@ -17,11 +18,9 @@ import java.util.List;
 @RequestMapping("task")
 public class TaskController {
 
-    private static List<Task> tasks = new ArrayList<>();
-
     @GetMapping
     public String displayTodoList(Model model){
-        model.addAttribute("tasks", tasks);
+        model.addAttribute("tasks", TaskData.getAll());
         return "task/index";
     }
 
@@ -32,7 +31,7 @@ public class TaskController {
 
     @PostMapping("create")
     public String createTask(@RequestParam String taskName, @RequestParam Number taskPriority){
-        tasks.add(new Task(taskName, taskPriority));
+        TaskData.add(new Task(taskName, taskPriority));
         return "redirect:";
     }
 

@@ -6,14 +6,18 @@
     <nav th:replace="fragments :: navigation"></nav>
     <h1>Create Task</h1>
 
+    <p th:text="${errorMsg}" style="color:red"></p>
+
             <div class="user_card" style="padding: 30px">
                 <div class="d-flex justify-content-center form_container">
                     <form method="post" action="/task/create">
                         <div>
-                            <input class="form-control" type="text" name="taskName" placeholder="Add Task"><br>
+                            <input class="form-control" th:field="${task.name}" placeholder="Add Task"><br>
+                            <p class="error" th:errors="${task.name}"></p>
                         </div>
                         <div>
-                            <input class="form-control" type="number" name="taskPriority" placeholder="Priority Level (1-5)"><br>
+                            <input class="form-control" th:field="${task.priority}" placeholder="Priority Level (1-5)"><br>
+                            <p class="error" th:errors="${task.priority}"></p>
                         </div>
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <button name="button" class="btn login_btn" type="submit">Create Task</button>

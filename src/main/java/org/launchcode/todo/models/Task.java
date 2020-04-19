@@ -2,8 +2,7 @@ package org.launchcode.todo.models;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.Objects;
 
 @Entity
@@ -12,9 +11,12 @@ public class Task extends AbstractEntity {
     private int id;
     private static int nextId = 1;
 
-    @NotBlank
-    @Size(min = 3, max = 50, message = "name must be between 3 and 50 characters")
+    @NotBlank(message = "Task is required")
+    @Size(min = 3, max = 50, message = "Task must be between 3 and 50 characters.")
     private String name;
+
+    @Min(1)
+    @Max(5)
     private Number priority;
 
     public Task(String name, Number priority){

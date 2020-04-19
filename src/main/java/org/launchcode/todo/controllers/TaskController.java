@@ -6,11 +6,10 @@ import org.launchcode.todo.models.Task;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +24,21 @@ public class TaskController {
     }
 
     @GetMapping("create")
-    public String renderCreateTaskForm(){
+    public String renderCreateTaskForm(Model model){
+        model.addAttribute("title", "Create Task");
+        model.addAttribute(new Task());
         return "task/create";
     }
 
     @PostMapping("create")
-    public String createTask(@RequestParam String taskName, @RequestParam Number taskPriority){
-        TaskData.add(new Task(taskName, taskPriority));
+    public String createTask(@ModelAttribute @Valid Task newTask, Errors errors, Model model){
+
+        if(errors.hasErrors()){
+            model.addAttribute("title", "Create Task");
+            return "task/create";
+        }
+
+        TaskData.add(newTask);
         return "redirect:";
     }
 

@@ -8,8 +8,9 @@ import java.util.Objects;
 @Entity
 public class Task extends AbstractEntity {
 
-    private int id;
-    private static int nextId = 1;
+    @ManyToOne
+    private User user;
+
 
     @NotBlank(message = "Task is required")
     @Size(min = 3, max = 50, message = "Task must be between 3 and 50 characters.")
@@ -19,11 +20,10 @@ public class Task extends AbstractEntity {
     @Max(5)
     private Integer priority;
 
-    public Task(String name, Integer priority){
+    public Task(String name, Integer priority, User user){
         this.name = name;
         this.priority = priority;
-        this.id = nextId;
-        nextId++;
+        this.user = user;
     }
 
     public Task(){}
@@ -44,22 +44,12 @@ public class Task extends AbstractEntity {
         this.priority = priority;
     }
 
-    @Override
-    public int getId() {
-        return id;
+    public User getUser() {
+        return user;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Task task = (Task) o;
-        return id == task.id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), id);
-    }
 }

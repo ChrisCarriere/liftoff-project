@@ -13,13 +13,9 @@ public abstract class AbstractEntity{
     @GeneratedValue
     private int id;
 
-
-
     public int getId() {
         return id;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -33,7 +29,5 @@ public abstract class AbstractEntity{
     public int hashCode() {
         return Objects.hash(id);
     }
-
-
 
 }

@@ -1,7 +1,6 @@
 package org.launchcode.todo.controllers;
 
 
-import org.launchcode.todo.data.TaskData;
 import org.launchcode.todo.models.Task;
 import org.launchcode.todo.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Controller
 @RequestMapping("task")

@@ -12,7 +12,7 @@
 
 <p th:unless="${tasks} and ${tasks.size()}">Find something to do!</p>
 
-    <table th:if="${tasks.size()}">
+    <table class="table" th:if="${tasks.size()}">
         <thead>
             <tr>
                 <th>Task</th>

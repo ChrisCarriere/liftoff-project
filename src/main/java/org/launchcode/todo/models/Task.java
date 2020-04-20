@@ -17,9 +17,9 @@ public class Task extends AbstractEntity {
 
     @Min(1)
     @Max(5)
-    private Number priority;
+    private Integer priority;
 
-    public Task(String name, Number priority){
+    public Task(String name, Integer priority){
         this.name = name;
         this.priority = priority;
         this.id = nextId;
@@ -36,11 +36,11 @@ public class Task extends AbstractEntity {
         this.name = name;
     }
 
-    public Number getPriority() {
+    public Integer getPriority() {
         return priority;
     }
 
-    public void setPriority(Number priority) {
+    public void setPriority(Integer priority) {
         this.priority = priority;
     }
 

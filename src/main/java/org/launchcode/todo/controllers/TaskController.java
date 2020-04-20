@@ -3,6 +3,8 @@ package org.launchcode.todo.controllers;
 
 import org.launchcode.todo.data.TaskData;
 import org.launchcode.todo.models.Task;
+import org.launchcode.todo.repositories.TaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -17,9 +19,12 @@ import java.util.List;
 @RequestMapping("task")
 public class TaskController {
 
+    @Autowired
+    private TaskRepository taskRepository;
+
     @GetMapping
     public String displayTodoList(Model model){
-        model.addAttribute("tasks", TaskData.getAll());
+        model.addAttribute("tasks", taskRepository.findAll());
         return "task/index";
     }
 
@@ -38,14 +43,14 @@ public class TaskController {
             return "task/create";
         }
 
-        TaskData.add(newTask);
+        taskRepository.save(newTask);
         return "redirect:";
     }
 
     @GetMapping("delete")
     public String renderDeleteEventForm(Model model){
         model.addAttribute("title", "Delete Events");
-        model.addAttribute("tasks", TaskData.getAll());
+        model.addAttribute("tasks", taskRepository.findAll());
         return "task/delete";
         }
 
@@ -54,7 +59,7 @@ public class TaskController {
 
         if(taskIds != null) {
             for (int id : taskIds) {
-                TaskData.remove(id);
+                taskRepository.deleteById(id);
             }
         }
         return "redirect:";

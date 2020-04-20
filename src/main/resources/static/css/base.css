@@ -1,5 +1,6 @@
 h1{
     text-align: center;
+    font-size: 48px;
 }
 
 .user_card{
@@ -37,4 +38,17 @@ ul{
 
 .error{
     color:red;
+}
+
+table{
+    margin: 0 auto;
+    font-size: 30px
+}
+
+th{
+    text-align: center;
+}
+
+td{
+    width: 50%;
 }

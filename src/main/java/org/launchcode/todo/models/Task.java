@@ -1,6 +1,7 @@
 package org.launchcode.todo.models;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.*;
 import java.util.Objects;
@@ -8,8 +9,6 @@ import java.util.Objects;
 @Entity
 public class Task extends AbstractEntity {
 
-    @ManyToOne
-    private User user;
 
 
     @NotBlank(message = "Task is required")
@@ -20,10 +19,11 @@ public class Task extends AbstractEntity {
     @Max(5)
     private Integer priority;
 
-    public Task(String name, Integer priority, User user){
+
+
+    public Task(String name, Integer priority){
         this.name = name;
         this.priority = priority;
-        this.user = user;
     }
 
     public Task(){}
@@ -44,12 +44,5 @@ public class Task extends AbstractEntity {
         this.priority = priority;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
 }

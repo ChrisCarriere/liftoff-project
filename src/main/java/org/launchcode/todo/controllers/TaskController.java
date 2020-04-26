@@ -62,5 +62,20 @@ public class TaskController {
         }
         return "redirect:";
     }
+
+    @PostMapping
+    public String completeTask(@RequestParam(required = false) int[] taskIds) {
+
+
+        if(taskIds != null) {
+            for (int id : taskIds) {
+                taskRepository.deleteById(id);
+            }
+        }
+
+        return "redirect:";
+
+    }
+
 }
 

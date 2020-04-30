@@ -3,8 +3,11 @@
 <head th:replace="fragments :: head"></head>
 
 <body>
-<nav th:replace="fragments :: navigation"></nav>
-<h1>Delete Tasks</h1>
+<nav class="navbar">
+    <a href="/task/"> Home  </a>
+    <a href="/task/create"> / Add Task  </a>
+    <a href="/logout/"> / Logout  </a>
+</nav><h1>Delete Tasks</h1>
 
 <div>
     <div class="d-flex justify-content-center form_container">
@@ -19,8 +22,10 @@
                     </div>
                 </th:block>
 
+            <p th:unless="${tasks} and ${tasks.size()}">There isn't anything to delete! Go do something!</p>
+
             <div class="d-flex justify-content-center mt-3 login_container">
-                <input type="submit" value="Delete" class="btn btn-danger">
+                <input type="submit" value="Delete" class="btn btn-danger" th:if="${tasks} and ${tasks.size()}">
             </div>
         </form>
     </div>
